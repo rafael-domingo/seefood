@@ -1,6 +1,8 @@
 import './App.css';
-
 import React from 'react';
+
+import FileUpload from '../components/upload';
+import Food from '../components/food';
 
 import {VisionAPI} from '../util/VisionAPI';
 
@@ -29,24 +31,36 @@ function App() {
     console.log(image);
   }
 
+  const AppStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+  const UploadStyle = {
+    width: '50%',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
+  const FoodStyle = {
+    width: '50%',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <input type="file" onChange={handleUpload}/>
-        <button onClick={buttonUpload}>Upload!</button>
-        <img ref={upload} />
+    <div style={AppStyle}>
+        <div style={UploadStyle}>
+          <FileUpload />
+        </div>
+        <div style={FoodStyle}>
+          <Food />
+        </div>
+        
     </div>
   );
 }
