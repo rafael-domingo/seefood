@@ -41,7 +41,7 @@ app.post('/upload', (req, res) => {
                 console.log(err);
                 return res.status(500).send();
             }
-
+            // Response back to client
             res.json({ fileName: file.name, filePath: `/uploads/${path}`, labels: response})
         });
     });
