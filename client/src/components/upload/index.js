@@ -14,12 +14,23 @@ function FileUpload() {
 
     // Listen for fileupload
     React.useEffect(() => {
-        onSubmit()
+        try {
+            onSubmit()
+        }
+        catch(err) {
+            console.log(`useEffect: ${err}`)
+        }
     }, [file])
 
     const onChange = e => {
-        setFile(e.target.files[0]);
-        setFilename(e.target.files[0].name);
+        try {
+            setFile(e.target.files[0]);
+            setFilename(e.target.files[0].name);
+        }
+        catch(err) {
+            console.log(`onchange: ${err}`)
+        }
+        
     };
 
     const onSubmit = async () => {
@@ -92,7 +103,7 @@ function FileUpload() {
             {message ? <Message msg={message}/> : null }
             <form onSubmit={onSubmit} style={formStyle}>
                 <div style={formStyle}>
-                    <motion.label htmlFor="customFile" style={inputStyle} animate={{ rotate: 360, transition: { duration: 1 } }}whileHover={{ scale: 2 }}>
+                    <motion.label htmlFor="customFile" style={inputStyle} animate={{ rotate: 360, transition: { duration: 1 } }}whileHover={{ scale: 2, borderRadius: '20px' }}>
                         <input type="file" id="customFile" onChange={onChange} style={{display: 'none'}}/>
                             {/* {filename} */}
                             +
@@ -100,7 +111,9 @@ function FileUpload() {
                     {/* <input type="submit" value="Upload" /> */}
 
                 </div>
-                <userImage uploadedFile={uploadedFile}/>
+                {
+                    userImage(uploadedFile)
+                }
 
             </form>
 
@@ -110,7 +123,7 @@ function FileUpload() {
     )
 }
 
-function userImage({uploadedFile}) {
+function userImage(uploadedFile) {
     const imgStyle = {
         width: '300px',
         height: '300px',
@@ -128,7 +141,7 @@ function userImage({uploadedFile}) {
 
     { uploadedFile && (
         <motion.div style={imgDivStyle} initial={{opacity: 0}} animate={{ opacity: 1 }} exit={{ opacity: 0}}>
-        {/* { uploadedFile.fileName } */}
+        { uploadedFile.fileName }
         <img style={imgStyle} src={uploadedFile.filePath} alt=""/>
         </motion.div>)
     }     

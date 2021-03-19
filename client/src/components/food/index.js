@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 import rice from '../../assets/asian.png';
 import egg from '../../assets/breakfast.png';
@@ -14,6 +14,15 @@ import vegetarian from '../../assets/vegetarian.png';
 
 
 function Food() {
+    const [loading, setLoading] = React.useState(true);
+    const controls = useAnimation();
+
+    React.useEffect(() => {
+        if(!loading) {
+            controls.stop()
+        }
+    }, [loading])
+
     const imgStyle = {
         margin: '20px',
     }
@@ -27,22 +36,50 @@ function Food() {
     }
 
     const containerVariants = {
-        hidden: { opacity: 0 },
+        hidden: { opacity: 1 },
         show: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.1,
             }
         } 
     }
 
-    const imgVariants = {
-        hidden: { opacity: 0 },
-        show: { 
+    controls.start( i => ({ 
             opacity: 1,
             scale: [1,2,1],
-        }
-    }
+            transition: {
+                duration: 0.5,
+                delay: i * 0.1,
+                repeat: Infinity,
+                repeatDelay: 4
+            }
+        })
+    )
+
+    const imageArray = [
+        rice,
+        egg,
+        fries,
+        chicken, 
+        hamburger, 
+        pizza,
+        seafood,
+        tacos,
+        vegan,
+        vegetarian,
+        rice,
+        egg,
+        fries,
+        chicken, 
+        hamburger, 
+        pizza,
+        seafood,
+        tacos,
+        vegan,
+        vegetarian
+    ];
+    
     return (
         <motion.div 
             style={containerStyle}
@@ -50,18 +87,28 @@ function Food() {
             initial="hidden"
             animate="show"
         >
-            <motion.img src={rice} style={imgStyle} variants={imgVariants} drag={true} dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0}}/>
-            <motion.img src={egg} style={imgStyle} variants={imgVariants}/>
-            <motion.img src={fries} style={imgStyle} variants={imgVariants}/>
-            <motion.img src={chicken} style={imgStyle} variants={imgVariants}/>
-            <motion.img src={hamburger} style={imgStyle} variants={imgVariants}/>
-            <motion.img src={pizza} style={imgStyle} variants={imgVariants}/>
-            <motion.img src={seafood} style={imgStyle} variants={imgVariants}/>
-            <motion.img src={tacos} style={imgStyle} variants={imgVariants}/>
-            <motion.img src={vegan} style={imgStyle} variants={imgVariants}/>
-            <motion.img src={vegetarian} style={imgStyle} variants={imgVariants}/>
+            {  
+                    imageArray.map((item, i) => (
+                        <motion.img 
+                            src={item} 
+                            custom={i} 
+                            style={imgStyle} 
+                            animate={controls}
+                            onAnimationComplete={definition => {
+                                console.log('Completed animating', definition)
+                            }}
+                        />    
+                    )) 
+            }
+            {/* <button onClick={() => {
+                console.log(`loading: ${loading}`)
+                setLoading(!loading)}
+                }/> */}
         </motion.div>
+        
     )
+
+    
 }
 
 export default Food;
