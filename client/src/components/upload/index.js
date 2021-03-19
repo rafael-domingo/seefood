@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import axios from 'axios';
 
 import Message from './message';
@@ -111,9 +111,7 @@ function FileUpload() {
                     {/* <input type="submit" value="Upload" /> */}
 
                 </div>
-                {
-                    userImage(uploadedFile)
-                }
+                <UserImage uploadedFile={uploadedFile} />
 
             </form>
 
@@ -123,27 +121,64 @@ function FileUpload() {
     )
 }
 
-function userImage(uploadedFile) {
+function UserImage({uploadedFile}) {
+
+    const x = useMotionValue(200);
+  const y = useMotionValue(200);
+
+  const rotateX = useTransform(y, [0, 400], [20, -20]);
+  const rotateY = useTransform(x, [0, 400], [-20, 20]);
+
+  const areaRef = React.useRef(null);
+
+  function handleMouse(event) {
+    // using a ref because event.target will switch
+    // to the values of the child div when you hover over it
+    var rect = areaRef.current.getBoundingClientRect();
+    // calculating the x and y position within the element
+    x.set(event.clientX - rect.left);
+    y.set(event.clientY - rect.top);
+  }
+
     const imgStyle = {
         width: '300px',
         height: '300px',
         objectFit: 'cover',
-        borderRadius: '50%'
+        borderRadius: '50%',
+        
     }
 
     const imgDivStyle = {
         width: '100%',
         height: '100%',
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        borderRadius: '20px',
+        rotateX: rotateX,
+          rotateY: rotateY
         
+    }
+
+    const outerDivStyle = {
+        width: '400px',
+        height: '400px',
+        display: "flex",
+        placeItems: "center",
+        placeContent: "center",
+        borderRadius: '30px',
+        // backgroundColor: "rgba(255, 255, 255, 0.05)",
+        perspective: '1000'
     }
     return (
   <AnimatePresence>
 
     { uploadedFile && (
-        <motion.div style={imgDivStyle} initial={{opacity: 0}} animate={{ opacity: 1 }} exit={{ opacity: 0}}>
-        { uploadedFile.fileName }
-        <img style={imgStyle} src={uploadedFile.filePath} alt=""/>
+        <motion.div style={outerDivStyle} ref={areaRef} onMouseMove={handleMouse}>
+            <motion.div style={imgDivStyle}>
+            { uploadedFile.fileName }
+            <img style={imgStyle} src={uploadedFile.filePath} alt=""/>
+            </motion.div>
         </motion.div>)
+     
     }     
 </AnimatePresence>
     )
