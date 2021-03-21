@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function Image({ uploadedFile, show, setShow, setShowFood }) {
+function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
     
     const backdrop = {
         visible: { 
@@ -64,7 +64,7 @@ function Image({ uploadedFile, show, setShow, setShowFood }) {
         alignItems: 'center',
         cursor: 'pointer'
     }
-
+    console.log(labels);
     return (
         <AnimatePresence exitBeforeEnter>
         { show && (
@@ -78,7 +78,7 @@ function Image({ uploadedFile, show, setShow, setShowFood }) {
                 <motion.div style={imgDivStyle}>
                 <div style={buttonStyle} onClick={() => {
                     setShow(!show)
-                    setShowFood(false)
+                    setUploadedFile({})
                 }
                 }
                 >X</div>

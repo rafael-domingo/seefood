@@ -1,36 +1,19 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 
 import FileUpload from '../components/upload';
 import Food from '../components/food';
+import Image from '../components/image';
 
-import {VisionAPI} from '../util/VisionAPI';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
-  const [image, setImage] = React.useState();
-  const [showFood, setShowFood] = React.useState(false);
-  const upload = React.useRef(null);
-
-  const handleUpload = event => {
-    const file = event.target.files[0];
-    if (file) {
-      console.log('file')
-      const reader = new FileReader();
-      const {current} = upload;
-      current.file = file;
-      reader.onload = (e) => {
-        current.src = e.target.result;
-        console.log(reader);
-        VisionAPI.search(reader);
-
-      }
-      reader.readAsDataURL(file);
-    }
-  }
-
-  const buttonUpload = () => {
-    console.log(image);
-  }
+  const [file, setFile] = useState('');
+  const [filename, setFilename] = useState('Choose File');
+  const [uploadedFile, setUploadedFile] = useState({});
+  const [message, setMessage] = useState('');
+  const [showImage, setShowImage] = useState(false);
+  const [labels, setLabels] = useState();
 
   const AppStyle = {
     display: 'flex',
@@ -40,7 +23,7 @@ function App() {
   }
   const UploadStyle = {
     width: '100%',
-    height: '50vh',
+    height: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
@@ -48,22 +31,72 @@ function App() {
 
   const FoodStyle = {
     width: '100%',
-    height: '50vh',
+    height: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   }
 
+  const variants = {
+    hidden: {
+      opacity: 0
+    },
+    show: {
+      opacity: 1
+    }
+  }
+
   return (
+    <AnimatePresence>
     <div style={AppStyle}>
-        <div style={UploadStyle}>
-          <FileUpload setShowFood={setShowFood}/>
-        </div>
-        <div style={FoodStyle}>
-          <Food show={showFood}/>
-        </div>
-        
+      <AnimatePresence exitBeforeEnter>
+        {
+          !showImage && (
+            <motion.div 
+            style={UploadStyle}
+            variants={variants}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+          >
+              <FileUpload 
+                setUploadedFile={setUploadedFile}
+                message={message}
+                setMessage={setMessage}
+                setShowImage={setShowImage}
+                setLabels={setLabels}
+              />
+            </motion.div>
+          )
+        }
+      </AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
+        { showImage && (
+          <motion.div 
+          style={FoodStyle}
+          variants={variants}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+        >
+            <Image 
+              uploadedFile={uploadedFile} 
+              show={showImage} 
+              setShow={setShowImage} 
+              setUploadedFile={setUploadedFile}
+              labels={labels}
+            />
+            <Food 
+              show={showImage}
+              labels={labels}
+            />
+          </motion.div>
+        )
+        }
+      </AnimatePresence>                
     </div>
+    </AnimatePresence>
+  
   );
 }
 

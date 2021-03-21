@@ -14,20 +14,99 @@ import vegetarian from '../../assets/vegetarian.png';
 
 import Item from '../item';
 
-function Food({show}) {
-    const [loading, setLoading] = React.useState(true);
+import {LabelCheck} from '../../util/LabelCheck';
 
+function Food({ show, labels }) {
+    const [loading, setLoading] = React.useState(true);
+    const [imageArray, setImageArray] = React.useState(
+        [
+            {
+                labels: [
+                    'rice'
+                ],
+                image: rice,
+                select: false
+            },
+            {
+                labels: [
+                    'egg',
+                    'eggs',
+                    'fried egg'
+                ],
+                image: egg,
+                select: false
+            },
+            {
+                labels: [
+                    'fries'
+                ],
+                image: fries,
+                select: false,
+            },
+            {
+                labels: [
+                    'chicken'
+                ],
+                image: chicken,
+                select: false
+            },
+            {
+                labels: [
+                    'hamburger'
+                ],
+                image: hamburger,
+                select: false
+            },
+            {
+                labels: [
+                    'pizza'
+                ],
+                image: pizza,
+                select: false
+            },
+            {
+                labels: [
+                    'seafood'
+                ],
+                image: seafood,
+                select: false
+            },
+            {
+                labels: [
+                    'tacos',
+                    'taco'
+                ],
+                image: tacos,
+                select: true
+            },
+            {
+                labels: [
+                    'vegan'
+                ],
+                image: vegan, 
+                select: false
+            },
+            {
+                labels: [
+                    'vegetarian'
+                ],
+                image: vegetarian, 
+                select: false
+            },
+        ]
+    );
     React.useEffect(() => {
-        if(!loading) {
-        }
-    }, [loading])
+        LabelCheck.compare(imageArray, labels).then(match => console.log(match));
+
+    }, [])
 
     const containerStyle = {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         flexWrap: 'wrap',
-        width: '100%'
+        width: '100%',
+        height: '100vh'
     }
 
     const containerVariants = {
@@ -40,51 +119,9 @@ function Food({show}) {
         } 
     }
 
-    const imageArray = [
-        {
-            image: rice,
-            select: false
-        },
-        {
-            image: egg,
-            select: false
-        },
-        {
-            image: fries,
-            select: false,
-        },
-        {
-            image: chicken,
-            select: false
-        },
-        {
-            image: hamburger,
-            select: true
-        },
-        {
-            image: pizza,
-            select: false
-        },
-        {
-            image: seafood,
-            select: false
-        },
-        {
-            image: tacos,
-            select: false
-        },
-        {
-            image: vegan, 
-            select: false
-        },
-        {
-            image: vegetarian, 
-            select: false
-        },
-    ];
-    
     const arrayLength = imageArray.length;
 
+    console.log('match')
     return (
         <AnimatePresence exitBeforeEnter>
             { show && (
@@ -93,6 +130,7 @@ function Food({show}) {
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
+                exit="hidden"
             >
                     {  
                         imageArray.map((item, i) => (

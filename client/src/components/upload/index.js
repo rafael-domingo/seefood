@@ -1,34 +1,32 @@
 import React, { Fragment, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 
 import Image from '../image';
 import Message from './message';
 
 
-function FileUpload({setShowFood}) {
-    const [file, setFile] = useState('');
-    const [filename, setFilename] = useState('Choose File');
-    const [uploadedFile, setUploadedFile] = useState({});
-    const [message, setMessage] = useState('');
-    const [uploadPercentage, setUploadPercentage] = useState(0);
-    const [showImage, setShowImage] = useState(false);
+function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabels}) {
+    const [currentImage, setCurrentImage] = useState();
+    const [currentFilename, setCurrentFilename] = useState();
 
     // Listen for fileupload
     React.useEffect(() => {
         try {
+            console.log('use effect')
             onSubmit()
         }
         catch(err) {
             console.log(`useEffect: ${err}`)
         }
-    }, [file])
+    }, [currentImage])
 
     const onChange = e => {
+        // e.preventDefault();
         try {
-            setFile(e.target.files[0]);
-            setFilename(e.target.files[0].name);
-            setShowImage(true);
+            console.log('on change');
+            setCurrentImage(e.target.files[0]);
+            setCurrentFilename(e.target.files[0].name);
         }
         catch(err) {
             console.log(`onchange: ${err}`)
@@ -39,28 +37,25 @@ function FileUpload({setShowFood}) {
     const onSubmit = async () => {
         // e.preventDefault();
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('file', currentImage);
 
         try {
+            console.log('onsubmit')
             const res = await axios.post('http://localhost:5000/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                },
-                onUploadProgress: progressEvent => {
-                    setUploadPercentage(parseInt(Math.round((progressEvent.loaded  * 100)/ progressEvent.total)))
-                    // Clear percentage 
-                    setTimeout(() => {
-                        setUploadPercentage(0)
-                    }, 10000)   
-                } 
+                }
             });
 
             const { fileName, filePath, labels } = res.data;
-            console.log(`labels: ${labels[0].description}`);
+            labels.map(item => console.log(item.description));
+            setLabels(labels);
             setUploadedFile({ fileName, filePath });
             setMessage('File Uploaded');
-            setShowFood(true);
+            setShowImage(true);
+
         } catch(err) {
+            console.log('error')
             if(err.response.status === 500) {
                 setMessage('There was a problem with the server');
             } else {
@@ -103,23 +98,41 @@ function FileUpload({setShowFood}) {
 
     return(
         <div style={fragmentStyle}>
-        <Fragment>
             {message ? <Message msg={message}/> : null }
-            <form onSubmit={onSubmit} style={formStyle}>
+            <form 
+                onSubmit={onSubmit} 
+                style={formStyle}
+            >
                 <div style={formStyle}>
-                    <motion.label htmlFor="customFile" style={inputStyle} initial={{ scale: 0, opacity: 0 }}animate={{ scale: 1, opacity: 1, transition: { duration: 1 } }}whileHover={{ width: '50vw', height: '50vh', borderRadius: '20px' }}>
-                        <input type="file" id="customFile" onChange={onChange} style={{display: 'none'}}/>
-                            {/* {filename} */}
+                    <motion.label 
+                        htmlFor="customFile" 
+                        style={inputStyle} 
+                        initial={{ 
+                            scale: 0, 
+                            opacity: 0 
+                        }}
+                        animate={{ 
+                            scale: 1, 
+                            opacity: 1, 
+                            transition: { 
+                                duration: 1
+                            } 
+                        }}
+                        whileHover={{ 
+                            width: '50vw', 
+                            height: '50vh', 
+                            borderRadius: '20px' 
+                        }}>
+                        <input 
+                            type="file" 
+                            id="customFile" 
+                            onChange={onChange} 
+                            style={{display: 'none'}}
+                        />
                             +
                     </motion.label>
-                    {/* <input type="submit" value="Upload" /> */}
-
                 </div>
-
             </form>
-
-        </Fragment>
-        <Image uploadedFile={uploadedFile} show={showImage} setShow={setShowImage} setShowFood={setShowFood}/>
         </div>
 
     )
