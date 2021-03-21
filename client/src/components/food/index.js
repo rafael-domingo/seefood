@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import rice from '../../assets/asian.png';
 import egg from '../../assets/breakfast.png';
@@ -12,20 +12,15 @@ import tacos from '../../assets/tacos.png';
 import vegan from '../../assets/vegan.png';
 import vegetarian from '../../assets/vegetarian.png';
 
+import Item from '../item';
 
-function Food() {
+function Food({show}) {
     const [loading, setLoading] = React.useState(true);
-    const controls = useAnimation();
 
     React.useEffect(() => {
         if(!loading) {
-            controls.stop()
         }
     }, [loading])
-
-    const imgStyle = {
-        margin: '20px',
-    }
 
     const containerStyle = {
         display: 'flex',
@@ -36,75 +31,80 @@ function Food() {
     }
 
     const containerVariants = {
-        hidden: { opacity: 1 },
+        hidden: { opacity: 0 },
         show: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1,
+                delayChildren: 1.5,
             }
         } 
     }
 
-    controls.start( i => ({ 
-            opacity: 1,
-            scale: [1,2,1],
-            transition: {
-                duration: 0.5,
-                delay: i * 0.1,
-                repeat: Infinity,
-                repeatDelay: 4
-            }
-        })
-    )
-
     const imageArray = [
-        rice,
-        egg,
-        fries,
-        chicken, 
-        hamburger, 
-        pizza,
-        seafood,
-        tacos,
-        vegan,
-        vegetarian,
-        rice,
-        egg,
-        fries,
-        chicken, 
-        hamburger, 
-        pizza,
-        seafood,
-        tacos,
-        vegan,
-        vegetarian
+        {
+            image: rice,
+            select: false
+        },
+        {
+            image: egg,
+            select: false
+        },
+        {
+            image: fries,
+            select: false,
+        },
+        {
+            image: chicken,
+            select: false
+        },
+        {
+            image: hamburger,
+            select: true
+        },
+        {
+            image: pizza,
+            select: false
+        },
+        {
+            image: seafood,
+            select: false
+        },
+        {
+            image: tacos,
+            select: false
+        },
+        {
+            image: vegan, 
+            select: false
+        },
+        {
+            image: vegetarian, 
+            select: false
+        },
     ];
     
+    const arrayLength = imageArray.length;
+
     return (
-        <motion.div 
-            style={containerStyle}
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-        >
-            {  
-                    imageArray.map((item, i) => (
-                        <motion.img 
-                            src={item} 
-                            custom={i} 
-                            style={imgStyle} 
-                            animate={controls}
-                            onAnimationComplete={definition => {
-                                console.log('Completed animating', definition)
-                            }}
-                        />    
-                    )) 
+        <AnimatePresence exitBeforeEnter>
+            { show && (
+                <motion.div 
+                style={containerStyle}
+                variants={containerVariants}
+                initial="hidden"
+                animate="show"
+            >
+                    {  
+                        imageArray.map((item, i) => (
+                            <Item item={item} index={i} key={`${item}${i}`} arrayLength={arrayLength}/>
+                        )) 
+                    }
+                </motion.div>
+            )
             }
-            {/* <button onClick={() => {
-                console.log(`loading: ${loading}`)
-                setLoading(!loading)}
-                }/> */}
-        </motion.div>
+        </AnimatePresence>
+
+      
         
     )
 

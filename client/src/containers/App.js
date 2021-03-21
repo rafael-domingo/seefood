@@ -8,6 +8,7 @@ import {VisionAPI} from '../util/VisionAPI';
 
 function App() {
   const [image, setImage] = React.useState();
+  const [showFood, setShowFood] = React.useState(false);
   const upload = React.useRef(null);
 
   const handleUpload = event => {
@@ -34,19 +35,20 @@ function App() {
   const AppStyle = {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexWrap: 'wrap'
   }
   const UploadStyle = {
-    width: '50%',
-    height: '100vh',
+    width: '100%',
+    height: '50vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   }
 
   const FoodStyle = {
-    width: '50%',
-    height: '100vh',
+    width: '100%',
+    height: '50vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
@@ -55,10 +57,10 @@ function App() {
   return (
     <div style={AppStyle}>
         <div style={UploadStyle}>
-          <FileUpload />
+          <FileUpload setShowFood={setShowFood}/>
         </div>
         <div style={FoodStyle}>
-          <Food />
+          <Food show={showFood}/>
         </div>
         
     </div>
