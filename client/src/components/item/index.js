@@ -1,15 +1,28 @@
 import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import {LabelCheck} from '../../util/LabelCheck';
 
-function Item({item, index, arrayLength}) {
+function Item({item, index, arrayLength, matchArray, imageArray, labels}) {
+    const [match, setMatch] = React.useState();
 
+ 
+    // check if there is a match
+    React.useEffect(() => {
+        LabelCheck.compare(item, labels).then(match => {
+            if (match.length > 0) {
+                setMatch(true)
+            }
+        })
+    })
+
+    // Animations
     const controls = useAnimation();
     controls.start( index => ({ 
         opacity: [0.1,1,0.1],
         scale: [1,2,1],
         transition: {
             duration: 0.5,
-            delay: index * 0.2
+            delay: index * 0.5
             }
         })
     )
@@ -18,7 +31,8 @@ function Item({item, index, arrayLength}) {
     }
 
     const position = arrayLength - index;
-    const delay = arrayLength * 0.1;
+    // Delay before showing the match, function of position of the food
+    const delay = position * 0.5;
 
     return (    
         <div>
@@ -28,7 +42,7 @@ function Item({item, index, arrayLength}) {
                 style={imgStyle} 
                 animate={controls}
                 onAnimationComplete={() => {
-                    if (item.select) {
+                    if (match) {
                         controls.start({
                             opacity: 1,
                             scale: 2,

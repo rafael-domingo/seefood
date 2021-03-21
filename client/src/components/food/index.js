@@ -18,6 +18,7 @@ import {LabelCheck} from '../../util/LabelCheck';
 
 function Food({ show, labels }) {
     const [loading, setLoading] = React.useState(true);
+    const [matchArray, setMatchArray] = React.useState(true);
     const [imageArray, setImageArray] = React.useState(
         [
             {
@@ -38,7 +39,9 @@ function Food({ show, labels }) {
             },
             {
                 labels: [
-                    'fries'
+                    'fries',
+                    'french fries',
+                    'fry'
                 ],
                 image: fries,
                 select: false,
@@ -66,7 +69,9 @@ function Food({ show, labels }) {
             },
             {
                 labels: [
-                    'seafood'
+                    'seafood',
+                    'fish',
+                    'salmon'
                 ],
                 image: seafood,
                 select: false
@@ -96,7 +101,7 @@ function Food({ show, labels }) {
         ]
     );
     React.useEffect(() => {
-        LabelCheck.compare(imageArray, labels).then(match => console.log(match));
+        // LabelCheck.compare(imageArray, labels).then(match => setMatchArray(match));
 
     }, [])
 
@@ -124,7 +129,7 @@ function Food({ show, labels }) {
     console.log('match')
     return (
         <AnimatePresence exitBeforeEnter>
-            { show && (
+            { show && matchArray  && (
                 <motion.div 
                 style={containerStyle}
                 variants={containerVariants}
@@ -134,7 +139,15 @@ function Food({ show, labels }) {
             >
                     {  
                         imageArray.map((item, i) => (
-                            <Item item={item} index={i} key={`${item}${i}`} arrayLength={arrayLength}/>
+                            <Item 
+                                item={item} 
+                                index={i} 
+                                key={`${item}${i}`} 
+                                arrayLength={arrayLength} 
+                                matchArray={matchArray}
+                                imageArray={imageArray}
+                                labels={labels}
+                            />
                         )) 
                     }
                 </motion.div>

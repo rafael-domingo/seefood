@@ -3,19 +3,15 @@ export const LabelCheck = {
         const matchArray = [];
         labels.forEach(label => {
             const description = label.description.toLowerCase();
-            array.forEach(food => {
-                food.labels.forEach(foodlabel => {
+                array.labels.forEach(foodlabel => { 
                     if (foodlabel === description) {
-                        matchArray.push(label)
+                        matchArray.push(label.description.toLowerCase())
+                        console.log(description)
                         // console.log('match')
                     } else {
                         // console.log('no match')
                     }
-                })
-                
-            })
-            console.log(matchArray);
-
+                })                
         })
         return matchArray;
 

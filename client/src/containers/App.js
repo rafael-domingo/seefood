@@ -34,7 +34,7 @@ function App() {
     height: '100vh',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'flex-end'
   }
 
   const variants = {
