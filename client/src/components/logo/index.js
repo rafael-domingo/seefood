@@ -1,7 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
-function Logo() {
+function Logo({ showImage }) {
+    const [mobile, setMobile] = React.useState(window.innerWidth < 1500)
 
     const containerStyle = {
         display: 'flex',
@@ -25,11 +26,12 @@ function Logo() {
         width: '50px',
         height: '50px',
         borderRadius: '50%',
-        backgroundColor: 'black',
+        backgroundColor: 'white',
     }
 
     const pupilVariants = {
         show: {
+            opacity: 1,
             x: [-20, 0, 20, 0, 20],
             y: [-20, -40, -20, 40, 20],
             transition: {
@@ -37,35 +39,46 @@ function Logo() {
                 type: 'spring'
                 
             }
+        },
+        hidden: {
+            opacity: 0
         }
     }
     return (
-        <div
-            style={containerStyle}
-        >
-            <div
-                style={eyeStyle}              
-            >
-                <motion.div
-                    style={pupilStyle}
-                    variants={pupilVariants}
-                    animate="show"
+        <AnimatePresence>
+            {
+                !mobile && (
+                    <div
+                    style={containerStyle}
                 >
-
-                </motion.div>
-            </div>
-            <div
-                style={eyeStyle}              
-            >
-                <motion.div
-                    style={pupilStyle}
-                    variants={pupilVariants}
-                    animate="show"
-                >
-
-                </motion.div>
-            </div>
-        </div>
+                    <div
+                        style={eyeStyle}              
+                    >
+                        <motion.div
+                            style={pupilStyle}
+                            variants={pupilVariants}
+                            animate="show"
+                        >
+    
+                        </motion.div>
+                    </div>
+                    <div
+                        style={eyeStyle}              
+                    >
+                        <motion.div
+                            style={pupilStyle}
+                            variants={pupilVariants}
+                            animate="show"
+                        >
+    
+                        </motion.div>
+                    </div>
+                </div>
+                )
+            }
+          
+        </AnimatePresence>
+       
     )
 }
 

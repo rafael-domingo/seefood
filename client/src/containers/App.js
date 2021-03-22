@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Upload from './upload';
 import Output from './output';
 import Logo from '../components/logo';
+import Background from '../components/background';
 
 import { AnimatePresence } from 'framer-motion';
 
@@ -17,7 +18,9 @@ function App() {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    width: '100%',
+    // height: '100%'
   }
 
   const variants = {
@@ -32,10 +35,12 @@ function App() {
   return (
     <AnimatePresence>
     <div style={AppStyle}>
-      <Logo />
+    <Background />
+
+      <Logo showImage={showImage}/>
       <AnimatePresence exitBeforeEnter>
         {
-          true && (
+          !showImage && (
             <Upload 
               variants={variants}
               setUploadedFile={setUploadedFile}

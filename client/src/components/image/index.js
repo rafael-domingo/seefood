@@ -37,12 +37,12 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
     }
       
     const containerDiv = {
-        position: 'fixed',
-        top: 300, 
+        position: 'relative',
+        // top: 300, 
         width: '80%',
-        height: '50vh',
+        height: '30vh',
         background: 'rgba(0,0,0,0.5)',
-        zIndex: '1',
+        // zIndex: '1',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

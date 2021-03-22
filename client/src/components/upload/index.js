@@ -14,6 +14,7 @@ function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabe
             const formData = new FormData();
             formData.append('file', currentImage);
     
+
             try {
                 console.log('onsubmit')
                 const res = await axios.post('http://localhost:5000/upload', formData, {

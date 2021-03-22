@@ -6,12 +6,13 @@ function Form({ onChange, onSubmit }) {
         borderRadius: '50%',
         width: '200px',
         height: '200px',
-        border: '1px solid white',
+        border: '5px solid white',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         color: 'white',
         fontSize: '3em',
+        backgroundColor: 'rgba(0,0,0,0)'
     }
 
     const formStyle = {
@@ -45,13 +46,11 @@ function Form({ onChange, onSubmit }) {
                             } 
                         }}
                         whileTap={{ 
-                            width: '50vw', 
-                            height: '50vh', 
+                            backgroundColor: 'rgba(0,0,0,1)',
                             borderRadius: '20px' 
                         }}
                         whileHover={{ 
-                            width: '50vw', 
-                            height: '50vh', 
+                            backgroundColor: 'rgba(0,0,0,1)',
                             borderRadius: '20px' 
                         }}>
                         <input 
@@ -60,7 +59,16 @@ function Form({ onChange, onSubmit }) {
                             onChange={onChange} 
                             style={{display: 'none'}}
                         />
-                            +
+                            <motion.p
+                                animate={{
+                                    color: 'rgba(255, 255, 255, 0)'
+                                }}
+                                whileHover={{
+                                    color: 'rgba(255, 255, 255, 1)'
+                                }}
+                            >
+                                Feed Me
+                            </motion.p>
                     </motion.label>
                 </div>
             </form>

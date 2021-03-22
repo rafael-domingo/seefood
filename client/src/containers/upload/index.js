@@ -7,7 +7,7 @@ function Upload({ variants, setUploadedFile, message, setMessage, setShowImage, 
     
     const UploadStyle = {
         width: '100%',
-        height: '100%',
+        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'

@@ -27,7 +27,9 @@ function Item({item, index, arrayLength, labels}) {
         })
     )
     const imgStyle = {
-        margin: '30px',
+        margin: '1em',
+        height: '2em',
+        width: '2em'
     }
 
     const position = arrayLength - index;

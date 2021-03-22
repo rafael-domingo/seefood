@@ -7,16 +7,15 @@ import Food from '../../components/food';
 function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFile, labels }) {
 
     const FoodStyle = {
-        width: '100%',
-        height: '40vh',
+        width: '100vw',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'flex-end',
-        padding: '50px'
+        alignItems: 'center',
+        flexWrap: 'wrap'
     }
-    
+
     return (
-        <div>
             <motion.div 
             style={FoodStyle}
             variants={variants}
@@ -36,7 +35,6 @@ function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFi
                 labels={labels}
                 />
             </motion.div>
-        </div>
     )
 }
 
