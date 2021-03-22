@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import {LabelCheck} from '../../util/LabelCheck';
 
-function Item({item, index, arrayLength, matchArray, imageArray, labels}) {
+function Item({item, index, arrayLength, labels}) {
     const [match, setMatch] = React.useState();
 
  

@@ -64,7 +64,7 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
         alignItems: 'center',
         cursor: 'pointer'
     }
-    console.log(labels);
+
     return (
         <AnimatePresence exitBeforeEnter>
         { show && (
