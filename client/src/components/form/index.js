@@ -44,6 +44,11 @@ function Form({ onChange, onSubmit }) {
                                 duration: 1
                             } 
                         }}
+                        whileTap={{ 
+                            width: '50vw', 
+                            height: '50vh', 
+                            borderRadius: '20px' 
+                        }}
                         whileHover={{ 
                             width: '50vw', 
                             height: '50vh', 

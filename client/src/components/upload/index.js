@@ -64,7 +64,7 @@ function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabe
 
     return(
         <div style={fragmentStyle}>
-            {message ? <Message msg={message}/> : null }
+            {/* {message ? <Message msg={message}/> : null } */}
             <Form onChange={onChange}/>
         </div>
 

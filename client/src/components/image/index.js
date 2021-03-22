@@ -38,7 +38,7 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
       
     const containerDiv = {
         position: 'fixed',
-        top: 100, 
+        top: 300, 
         width: '80%',
         height: '50vh',
         background: 'rgba(0,0,0,0.5)',

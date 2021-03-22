@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import Upload from './upload';
 import Output from './output';
+import Logo from '../components/logo';
 
 import { AnimatePresence } from 'framer-motion';
 
@@ -31,6 +32,7 @@ function App() {
   return (
     <AnimatePresence>
     <div style={AppStyle}>
+      <Logo />
       <AnimatePresence exitBeforeEnter>
         {
           true && (
