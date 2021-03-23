@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import Message from './message';
 import Form from '../form';
 
 function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabels}) {

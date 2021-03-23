@@ -1,5 +1,42 @@
 import React from 'react';
 import Particles from 'react-tsparticles';
+import apple from '../../assets/apple.png';
+import avocado from '../../assets/avocado.png';
+import bacon from '../../assets/bacon.png';
+import banana from '../../assets/banana.png';
+import beef from '../../assets/beef.png';
+import bread from '../../assets/bread.png';
+import broccoli from '../../assets/broccoli.png';
+import cake from '../../assets/cake.png';
+import cheese from '../../assets/cheese.png';
+import chips from '../../assets/chips.png';
+import crab from '../../assets/crab.png';
+import cupcake from '../../assets/cupcake.png';
+import dumpling from '../../assets/dumpling.png';
+import egg from '../../assets/eggs.png';
+import fish from '../../assets/fish.png';
+import fries from '../../assets/fries.png';
+import hamburger from '../../assets/hamburger.png';
+import hotdog from '../../assets/hotdog.png';
+import icecream from '../../assets/icecream.png';
+import mango from '../../assets/mango.png';
+import noodles from '../../assets/noodles.png';
+import notfood from '../../assets/notfood.png';
+import octopus from '../../assets/octopus.png';
+import orange from '../../assets/orange.png';
+import pineapple from '../../assets/pineapple.png';
+import pizza from '../../assets/pizza.png';
+import popcorn from '../../assets/popcorn.png';
+import pumpkin from '../../assets/pumpkin.png';
+import sandwich from '../../assets/sandwich.png';
+import shrimp from '../../assets/shrimp.png';
+import spaghetti from '../../assets/spaghetti.png';
+import spam from '../../assets/spam.png';
+import taco from '../../assets/taco.png';
+import tomato from '../../assets/tomato.png';
+import waffle from '../../assets/waffle.png';
+import watermelon from '../../assets/watermelon.png';
+import yogurt from '../../assets/yogurt.png';
 
 function Background() {
     return (
@@ -385,167 +422,367 @@ function Background() {
                               },
                               "image": [
                                 {
-                                  "src": "https://particles.js.org/images/fruits//apple.png",
+                                  "src": apple,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//avocado.png",
+                                  "src": avocado,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//banana.png",
+                                  "src": bacon,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//berries.png",
+                                  "src": banana,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//cherry.png",
+                                  "src": beef,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//grapes.png",
+                                  "src": bread,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//lemon.png",
+                                  "src": broccoli,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//orange.png",
+                                  "src": cake,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//peach.png",
+                                  "src": cheese,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//pear.png",
+                                  "src": chips,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//pepper.png",
+                                  "src": crab,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//plum.png",
+                                  "src": cupcake,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//star.png",
+                                  "src": dumpling,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//strawberry.png",
+                                  "src": egg,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//watermelon.png",
+                                  "src": fish,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//watermelon_slice.png",
+                                  "src": fries,
                                   "width": 32,
                                   "height": 32
-                                }
+                                },
+                                {
+                                  "src": hamburger,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": hotdog,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": icecream,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": mango,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": noodles,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": octopus,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": orange,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": pineapple,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": pizza,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": popcorn,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": pumpkin,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": sandwich,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": shrimp,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": spaghetti,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": spam,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": taco,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": tomato,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": waffle,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": watermelon,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": yogurt,
+                                  "width": 32,
+                                  "height": 32
+                                },
                               ],
                               "images": [
-                                {
-                                  "src": "https://particles.js.org/images/fruits//apple.png",
+                                { 
+                                  "src": apple,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//avocado.png",
+                                  "src": avocado,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//banana.png",
+                                  "src": bacon,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//berries.png",
+                                  "src": banana,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//cherry.png",
+                                  "src": beef,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//grapes.png",
+                                  "src": bread,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//lemon.png",
+                                  "src": broccoli,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//orange.png",
+                                  "src": cake,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//peach.png",
+                                  "src": cheese,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//pear.png",
+                                  "src": chips,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//pepper.png",
+                                  "src": crab,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//plum.png",
+                                  "src": cupcake,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//star.png",
+                                  "src": dumpling,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//strawberry.png",
+                                  "src": egg,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//watermelon.png",
+                                  "src": fish,
                                   "width": 32,
                                   "height": 32
                                 },
                                 {
-                                  "src": "https://particles.js.org/images/fruits//watermelon_slice.png",
+                                  "src": fries,
                                   "width": 32,
                                   "height": 32
-                                }
+                                },
+                                {
+                                  "src": hamburger,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": hotdog,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": icecream,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": mango,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": noodles,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": octopus,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": orange,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": pineapple,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": pizza,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": popcorn,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": pumpkin,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": sandwich,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": shrimp,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": spaghetti,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": spam,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": taco,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": tomato,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": waffle,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": watermelon,
+                                  "width": 32,
+                                  "height": 32
+                                },
+                                {
+                                  "src": yogurt,
+                                  "width": 32,
+                                  "height": 32
+                                },
                               ]
                             },
                             "type": "image"

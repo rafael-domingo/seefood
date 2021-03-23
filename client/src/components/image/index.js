@@ -18,6 +18,13 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
             duration: 1,
             type: 'spring'
         } },
+        exit: {
+            opacity: 0,
+            transition: {
+                duration: 1,
+                type: 'spring'
+            }
+        }
     }
 
     const imgStyle = {
@@ -29,7 +36,7 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
 
     const imgDivStyle = {
         width: '100%',
-        height: '100%',
+        height: '80%',
         borderRadius: '50px',
         display: 'flex',
         justifyContent: 'center',
@@ -40,8 +47,8 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
         position: 'relative',
         // top: 300, 
         width: '80%',
-        height: '30vh',
-        background: 'rgba(0,0,0,0.5)',
+        height: '50vh',
+        // background: 'rgba(0,0,0,0.5)',
         // zIndex: '1',
         display: 'flex',
         justifyContent: 'center',
@@ -53,8 +60,8 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
         position: 'absolute',
         height: '50px',
         width: '50px',
-        top: 20,
-        right: 20,
+        top: '12%',
+        right: '2%',
         color: 'white',
         rotate: '45',
         borderRadius: '50%',
@@ -73,7 +80,7 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
                 variants={backdrop}
                 initial="hidden"
                 animate="visible"
-                exit="hidden"
+                exit="exit"
                 >
                 <motion.div style={imgDivStyle}>
                 <div style={buttonStyle} onClick={() => {

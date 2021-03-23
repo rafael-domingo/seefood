@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Image from '../../components/image';
 import Food from '../../components/food';
@@ -7,15 +7,21 @@ import Food from '../../components/food';
 function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFile, labels }) {
 
     const FoodStyle = {
-        width: '100vw',
+        width: '100%',
         height: '100%',
         display: 'flex',
+        margin: '50px',
         justifyContent: 'center',
         alignItems: 'center',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        marginTop: '50px',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        borderRadius: '50px'
+
     }
 
     return (
+        <AnimatePresence exitBeforeEnter>
             <motion.div 
             style={FoodStyle}
             variants={variants}
@@ -35,6 +41,8 @@ function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFi
                 labels={labels}
                 />
             </motion.div>
+        </AnimatePresence>
+          
     )
 }
 

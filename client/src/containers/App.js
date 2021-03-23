@@ -20,7 +20,7 @@ function App() {
     alignItems: 'center',
     flexWrap: 'wrap',
     width: '100%',
-    // height: '100%'
+    // height: '100%',
   }
 
   const variants = {
@@ -33,7 +33,7 @@ function App() {
   }
 
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
     <div style={AppStyle}>
     <Background />
 

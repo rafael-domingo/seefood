@@ -1,16 +1,43 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, m } from 'framer-motion';
 
-import rice from '../../assets/asian.png';
-import egg from '../../assets/breakfast.png';
-import fries from '../../assets/fastfood.png';
-import chicken from '../../assets/friedchicken.png';
+import apple from '../../assets/apple.png';
+import avocado from '../../assets/avocado.png';
+import bacon from '../../assets/bacon.png';
+import banana from '../../assets/banana.png';
+import beef from '../../assets/beef.png';
+import bread from '../../assets/bread.png';
+import broccoli from '../../assets/broccoli.png';
+import cake from '../../assets/cake.png';
+import cheese from '../../assets/cheese.png';
+import chips from '../../assets/chips.png';
+import crab from '../../assets/crab.png';
+import cupcake from '../../assets/cupcake.png';
+import dumpling from '../../assets/dumpling.png';
+import egg from '../../assets/eggs.png';
+import fish from '../../assets/fish.png';
+import fries from '../../assets/fries.png';
 import hamburger from '../../assets/hamburger.png';
+import hotdog from '../../assets/hotdog.png';
+import icecream from '../../assets/icecream.png';
+import mango from '../../assets/mango.png';
+import noodles from '../../assets/noodles.png';
+import notfood from '../../assets/notfood.png';
+import octopus from '../../assets/octopus.png';
+import orange from '../../assets/orange.png';
+import pineapple from '../../assets/pineapple.png';
 import pizza from '../../assets/pizza.png';
-import seafood from '../../assets/seafood.png';
-import tacos from '../../assets/tacos.png';
-import vegan from '../../assets/vegan.png';
-import vegetarian from '../../assets/vegetarian.png';
+import popcorn from '../../assets/popcorn.png';
+import pumpkin from '../../assets/pumpkin.png';
+import sandwich from '../../assets/sandwich.png';
+import shrimp from '../../assets/shrimp.png';
+import spaghetti from '../../assets/spaghetti.png';
+import spam from '../../assets/spam.png';
+import taco from '../../assets/taco.png';
+import tomato from '../../assets/tomato.png';
+import waffle from '../../assets/waffle.png';
+import watermelon from '../../assets/watermelon.png';
+import yogurt from '../../assets/yogurt.png';
 
 import Item from '../item';
 
@@ -19,9 +46,95 @@ function Food({ show, labels }) {
     const imageArray = [
         {
             labels: [
-                'rice'
+                'apple'
             ],
-            image: rice,
+            image: apple,
+        },
+        {
+            labels: [
+                'avocado'
+            ],
+            image: avocado,
+        },
+        {
+            labels: [
+                'bacon'
+            ],
+            image: bacon,
+        },
+        {
+            labels: [
+                'banana'
+            ],
+            image: banana
+        },
+        {
+            labels: [
+                'beef',
+                'steak',
+                'tenderloin',
+                'ribeye',
+                'rib-eye',
+                't-bone'
+            ],
+            image: beef
+        },
+        {
+            labels: [
+                'bread',
+                'baguette',
+                'toast'
+            ],
+            image: bread
+        },
+        {
+            labels: [
+                'broccoli'
+            ],
+            image: broccoli
+        },
+        {
+            labels: [
+                'cake',
+                'birthday'
+            ],
+            image: cake
+        },
+        {
+            labels: [
+                'cheese'
+            ],
+            image: cheese
+        },
+        {
+            labels: [
+                'chips',
+                'crisps',
+                'doritos',
+                'pringles',
+            ],
+            image: chips
+        },
+        {
+            labels: [
+                'crab'
+            ],
+            image: crab
+        },
+        {
+            labels: [
+                'cupcake',
+                'cup cake'
+            ],
+            image: cupcake
+        },
+        {
+            labels: [
+                'dumpling',
+                'dimsum',
+                'gyoza'
+            ],
+            image: dumpling
         },
         {
             labels: [
@@ -33,17 +146,21 @@ function Food({ show, labels }) {
         },
         {
             labels: [
+                'fish',
+                'filet',
+                'salmon',
+                'trout',
+                'tilapia'
+            ],
+            image: fish
+        },
+        {
+            labels: [
                 'fries',
                 'french fries',
                 'fry'
             ],
             image: fries,
-        },
-        {
-            labels: [
-                'chicken'
-            ],
-            image: chicken,
         },
         {
             labels: [
@@ -53,36 +170,151 @@ function Food({ show, labels }) {
         },
         {
             labels: [
+                'hot dog',
+                'wiener',
+                'sausage',
+                'hotdog',
+            ],
+            image: hotdog
+        },
+        {
+            labels: [
+                'icecream',
+                'sundae',
+                'ice cream',
+                'cone'
+            ],
+            image: icecream
+        },
+        {
+            labels: [
+                'mango'
+            ],
+            image: mango
+        },
+        {
+            labels: [
+                'noodles',
+                'pasta',
+                'lo mein',
+                'pad thai'
+            ],
+            image: noodles
+        },
+        {
+            labels: [
+                'octopus',
+                'squid',
+                'calamari'
+            ],
+            image: octopus
+        },
+        {
+            labels: [
+                'orange',
+                'clementine',
+                'mandarin'
+            ],
+            image: orange
+        },
+        {
+            labels: [
+                'pineapple'
+            ],
+            image: pineapple
+        },
+        {
+            labels: [
                 'pizza'
             ],
             image: pizza,
         },
         {
             labels: [
-                'seafood',
-                'fish',
-                'salmon'
+                'popcorn'
             ],
-            image: seafood,
+            image: popcorn
+        },
+        {
+            labels: [
+                'pumpkin'
+            ],
+            image: pumpkin
+        },
+        {
+            labels: [
+                'sandwich',
+                'sub',
+                'hoagie',
+                'grilled cheese'
+            ],
+            image: sandwich
+        },
+        {
+            labels: [
+                'shrimp',
+                'crawfish',
+            ],
+            image: shrimp
+        },
+        {
+            labels: [
+                'pasta',
+                'spaghetti',
+                'mac and cheese'
+            ],
+            image: spaghetti
+        },
+        {
+            labels: [
+                'spam'
+            ],
+            image: spam
         },
         {
             labels: [
                 'tacos',
-                'taco'
+                'taco',
+                'tortilla'
             ],
-            image: tacos,
+            image: taco,
         },
         {
             labels: [
-                'vegan'
+                'tomato',
+                'roma tomato',
             ],
-            image: vegan, 
+            image: tomato, 
         },
         {
             labels: [
-                'vegetarian'
+                'waffle',
+                'waffles',
+                'chicken and waffles'
             ],
-            image: vegetarian, 
+            image: waffle
+        },
+        {
+            labels: [
+                'watermelon',
+                'water melon'
+            ],
+            image: watermelon
+        },
+        {
+            labels: [
+                'yogurt',
+                'greek yogurt',
+                'yoghurt',
+                'greek yoghurt'
+            ],
+            image: yogurt
+        },
+        {
+            labels: [
+                'cannot recognize'
+            ],
+            image: notfood, 
         },
     ]
     const arrayLength = imageArray.length;
@@ -93,7 +325,7 @@ function Food({ show, labels }) {
         alignItems: 'flex-end',
         flexWrap: 'wrap',
         width: '100%',
-        height: '100%'
+        height: '100%',
     }
 
     const containerVariants = {

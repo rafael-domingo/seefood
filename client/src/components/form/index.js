@@ -12,7 +12,7 @@ function Form({ onChange, onSubmit }) {
         alignItems: 'center',
         color: 'white',
         fontSize: '3em',
-        backgroundColor: 'rgba(0,0,0,0)'
+        backgroundColor: 'rgba(47,33,70,0.5)'
     }
 
     const formStyle = {
@@ -46,12 +46,16 @@ function Form({ onChange, onSubmit }) {
                             } 
                         }}
                         whileTap={{ 
-                            backgroundColor: 'rgba(0,0,0,1)',
-                            borderRadius: '20px' 
+                            backgroundColor: 'rgba(47,33,70,1)',
+                            borderRadius: '20px',
+                            width: '50vw',
+                            height: '50vh'
                         }}
                         whileHover={{ 
-                            backgroundColor: 'rgba(0,0,0,1)',
-                            borderRadius: '20px' 
+                            backgroundColor: 'rgba(47,33,70,1)',
+                            borderRadius: '20px',
+                            width: '50vw',
+                            height: '50vh'
                         }}>
                         <input 
                             type="file" 
@@ -60,14 +64,14 @@ function Form({ onChange, onSubmit }) {
                             style={{display: 'none'}}
                         />
                             <motion.p
-                                animate={{
-                                    color: 'rgba(255, 255, 255, 0)'
-                                }}
-                                whileHover={{
-                                    color: 'rgba(255, 255, 255, 1)'
-                                }}
+                                // animate={{
+                                //     color: 'rgba(255, 255, 255, 0)'
+                                // }}
+                                // whileHover={{
+                                //     color: 'rgba(255, 255, 255, 1)'
+                                // }}
                             >
-                                Feed Me
+                                Upload
                             </motion.p>
                     </motion.label>
                 </div>
