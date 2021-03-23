@@ -2,15 +2,15 @@ import React from 'react';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import {LabelCheck} from '../../util/LabelCheck';
 
-function Item({item, index, arrayLength, labels}) {
+function Item({item, index, arrayLength, labels, handleMatch}) {
     const [match, setMatch] = React.useState();
-
  
     // check if there is a match
     React.useEffect(() => {
         LabelCheck.compare(item, labels).then(match => {
             if (match.length > 0) {
                 setMatch(true)
+                handleMatch(match)
             }
         })
     })
@@ -22,10 +22,11 @@ function Item({item, index, arrayLength, labels}) {
         scale: [1,2,1],
         transition: {
             duration: 0.15,
-            delay: index * 0.15
+            // delay: index * 0.15
             }
         })
     )
+
     const imgStyle = {
         margin: '1em',
         height: '4em',
@@ -45,6 +46,7 @@ function Item({item, index, arrayLength, labels}) {
                 animate={controls}
                 onAnimationComplete={() => {
                     if (match) {
+                       
                         controls.start({
                             opacity: 1,
                             scale: 2,
@@ -52,8 +54,11 @@ function Item({item, index, arrayLength, labels}) {
                                 delay: delay
                             }
                         })
+                       
                     } 
-                    
+                      
+                   
+
                 }}
             />        
         </AnimatePresence>

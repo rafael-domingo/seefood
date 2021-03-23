@@ -42,7 +42,8 @@ import yogurt from '../../assets/yogurt.png';
 import Item from '../item';
 
 function Food({ show, labels }) {
-    const [matchArray, setMatchArray] = React.useState(true);
+    const [matchArray, setMatchArray] = React.useState();
+
     const imageArray = [
         {
             labels: [
@@ -342,16 +343,21 @@ function Food({ show, labels }) {
             y: 0,
             transition: {
                 duration: 0.5,
-                delay: 0.5,
-                delayChildren: 2,
+                // delay: 0.5,
+                delayChildren: 1,
                 type: 'spring'
             }
         } 
     }
 
+    const handleMatch = (array) => {
+        console.log(`handleMatch: ${array}`)
+        // setMatchArray(array);
+    }
+
     return (
         <AnimatePresence exitBeforeEnter>
-            { show && matchArray  && (
+            { show && (
                 <motion.div 
                 style={containerStyle}
                 variants={containerVariants}
@@ -367,12 +373,20 @@ function Food({ show, labels }) {
                                 key={`${item}${i}`} 
                                 arrayLength={arrayLength} 
                                 labels={labels}
+                                handleMatch={handleMatch}
                             />
                         )) 
                     }
                 </motion.div>
             )
             }
+            {/* {
+                !loading && (
+                    <div style={{color: 'white'}}>
+                        Loading complete
+                    </div>
+                )
+            } */}
         </AnimatePresence>
 
       

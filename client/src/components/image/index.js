@@ -45,11 +45,8 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
       
     const containerDiv = {
         position: 'relative',
-        // top: 300, 
         width: '80%',
         height: '50vh',
-        // background: 'rgba(0,0,0,0.5)',
-        // zIndex: '1',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -60,8 +57,8 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
         position: 'absolute',
         height: '50px',
         width: '50px',
-        top: '12%',
-        right: '2%',
+        top: '2%',
+        right: '0%',
         color: 'white',
         rotate: '45',
         borderRadius: '50%',
@@ -82,14 +79,13 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
                 animate="visible"
                 exit="exit"
                 >
-                <motion.div style={imgDivStyle}>
                 <div style={buttonStyle} onClick={() => {
                     setShow(!show)
                     setUploadedFile({})
                 }
                 }
                 >X</div>
-
+                <motion.div style={imgDivStyle}>
                 <img style={imgStyle} src={uploadedFile.filePath} alt=""/>
                 </motion.div>
             </motion.div>

@@ -15,7 +15,8 @@ function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFi
         alignItems: 'center',
         flexWrap: 'wrap',
         marginTop: '50px',
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(47,33,70,1)',
+        boxShadow: '5px 10px',
         borderRadius: '50px'
 
     }

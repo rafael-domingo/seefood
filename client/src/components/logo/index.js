@@ -47,11 +47,12 @@ function Logo({ showImage }) {
     const pupilVariants = {
         show: {
             opacity: 1,
-            x: [-10, 0, 10, 0, 10],
-            y: [-10, -20, -10, 20, 10],
+            x: [-10, 0, 10, 0, 10, 0, -10],
+            y: [-10, -20, -10, 20, 10, -20, -10],
             transition: {
-                duration: 2,
-                type: 'spring'
+                duration: 5,
+                type: 'spring',
+                repeat: Infinity
                 
             }
         },
