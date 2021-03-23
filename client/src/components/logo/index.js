@@ -5,7 +5,7 @@ function Logo({ showImage }) {
     const [mobile, setMobile] = React.useState(window.innerWidth < 1500)
 
     const titleStyle = {
-        fontSize: '1.5em',
+        fontSize: '2em',
         color: 'white',
         textAlign: 'center',
         fontFamily: 'helvetica'
@@ -34,7 +34,10 @@ function Logo({ showImage }) {
         border: '2px solid white',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        boxShadow: '5px 10px',
+        backgroundColor: 'rgba(47, 33, 70, 1)'
+
     }
 
     const pupilStyle = {
