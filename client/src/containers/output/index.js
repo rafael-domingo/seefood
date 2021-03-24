@@ -43,10 +43,9 @@ import waffle from '../../assets/waffle.png';
 import watermelon from '../../assets/watermelon.png';
 import yogurt from '../../assets/yogurt.png';
 
-function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFile, labels }) {
+function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFile, labels, hotDogMode }) {
     const [loaded, setLoaded] = React.useState(false);
     const [matchState, setMatchState] = React.useState();
-    const [hotDogMode, setHotDogMode] =  React.useState(true); 
     const imageArray = [
         {
             labels: [

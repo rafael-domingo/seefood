@@ -14,6 +14,7 @@ function App() {
   const [message, setMessage] = useState('');
   const [showImage, setShowImage] = useState(false);
   const [labels, setLabels] = useState();
+  const [hotDogMode, setHotDogMode] = useState(false);
 
   const AppStyle = {
     display: 'flex',
@@ -62,6 +63,7 @@ function App() {
             setShowImage={setShowImage}
             setUploadedFile={setUploadedFile}
             labels={labels}
+            hotDogMode={hotDogMode}
           />
         )
         }
@@ -69,7 +71,7 @@ function App() {
       <AnimatePresence exitBeforeEnter>
       {
         !showImage &&  (
-          <JianYang />
+          <JianYang hotDogMode={hotDogMode} setHotDogMode={setHotDogMode}/>
         )
       }     
       </AnimatePresence>               

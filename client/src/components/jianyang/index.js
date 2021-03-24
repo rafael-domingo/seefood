@@ -2,21 +2,34 @@ import React from 'react';
 import Jian from '../../assets/jianyang.png';
 import { AnimatePresence, motion } from 'framer-motion';
 
-function JianYang() {
+function JianYang({ setHotDogMode, hotDogMode }) {
     const divStyle = {
         borderRadius: '30px',
-        height: '5em',
-        width: '5em',
+        height: '100%',
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexWrap: 'wrap'
     }
 
     const imgStyle = {
         borderRadius: '30px',
         width: '10em',
-        height: '10em'
+        height: '10em',
+    }
+
+    const imgDivStyle = {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center'
+    }
+
+    const textStyle = {
+        color: 'white',
+        fontSize: '2em',
+        width: '100%',
+        textAlign: 'center'
     }
 
     const variants = {
@@ -41,8 +54,19 @@ function JianYang() {
             animate="show"
             whileHover="hover"
             whileTap="hover"
+            onClick={() => {
+                console.log(`Toggle Hot Dog Mode: ${hotDogMode}`)
+                setHotDogMode(!hotDogMode)}
+            }
         >
-            <img src={Jian} style={imgStyle}/>
+            <div style={imgDivStyle}>
+                <img src={Jian} style={imgStyle}/>
+            </div>
+
+            <div style={textStyle}>
+                <p>{`Hot Dog mode: ${hotDogMode}`}</p>
+            </div>
+            
         </motion.div>
       
     )
