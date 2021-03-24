@@ -1,19 +1,31 @@
 export const LabelCheck = {
     async compare(array, labels) {
-        const matchArray = [];
+        var matchArray;
         labels.forEach(label => {
             const description = label.description.toLowerCase();
                 array.labels.forEach(foodlabel => { 
                     if (foodlabel === description) {
-                        matchArray.push(label.description.toLowerCase())
-                        console.log(description)
-                        // console.log('match')
-                    } else {
-                        // console.log('no match')
-                    }
-                })                
+                        console.log(`description: ${label.description}, score: ${label.score}`);
+
+                        // Compare which label has a higher score
+                        if (!matchArray) {
+                            matchArray = label;
+                        } else if (matchArray) {
+                            if (label.score > matchArray.score) {
+                                matchArray = label;
+                            }
+                        }
+                    } 
+                })
         })
-        return matchArray;
+
+        // Check if match is empty
+        if (matchArray) {
+            return matchArray.description;
+        } else {
+            return []
+        }
+        
 
     }
 }

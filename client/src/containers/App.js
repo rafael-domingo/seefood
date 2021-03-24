@@ -5,6 +5,7 @@ import Upload from './upload';
 import Output from './output';
 import Logo from '../components/logo';
 import Background from '../components/background';
+import JianYang from '../components/jianyang';
 
 import { AnimatePresence } from 'framer-motion';
 
@@ -64,7 +65,15 @@ function App() {
           />
         )
         }
-      </AnimatePresence>                
+      </AnimatePresence> 
+      <AnimatePresence exitBeforeEnter>
+      {
+        !showImage &&  (
+          <JianYang />
+        )
+      }     
+      </AnimatePresence>               
+     
     </div>
     </AnimatePresence>
   

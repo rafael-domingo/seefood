@@ -1,19 +1,16 @@
 import React from 'react';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
-import {LabelCheck} from '../../util/LabelCheck';
 
-function Item({item, index, arrayLength, labels, handleMatch}) {
+function Item({item, index, arrayLength, labels, matchState, text}) {
     const [match, setMatch] = React.useState();
- 
     // check if there is a match
     React.useEffect(() => {
-        LabelCheck.compare(item, labels).then(match => {
-            if (match.length > 0) {
+        item.labels.map(label => {
+            if(label === text.toLowerCase()) {
                 setMatch(true)
-                handleMatch(match)
             }
         })
-    })
+    }, [0])
 
     // Animations
     const controls = useAnimation();
@@ -51,7 +48,7 @@ function Item({item, index, arrayLength, labels, handleMatch}) {
                             opacity: 1,
                             scale: 2,
                             transition: {
-                                delay: delay
+                                delay: 0.5
                             }
                         })
                        
