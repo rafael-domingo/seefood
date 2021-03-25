@@ -34,52 +34,94 @@ function App() {
     }
   }
 
-  return (
-    <AnimatePresence exitBeforeEnter>
-    <div style={AppStyle}>
-    <Background />
-
-      <Logo showImage={showImage}/>
+  if (window.innerWidth < 1500) {
+    return (
       <AnimatePresence exitBeforeEnter>
-        {
-          !showImage && (
-            <Upload 
+      <div style={AppStyle}>
+      <Background />
+  
+        <Logo showImage={showImage}/>
+        <AnimatePresence exitBeforeEnter>
+          {
+            !showImage && (
+              <Upload 
+                variants={variants}
+                setUploadedFile={setUploadedFile}
+                message={message}
+                setMessage={setMessage}
+                setShowImage={setShowImage}
+                setLabels={setLabels}
+              />
+            )
+          }
+        </AnimatePresence>
+        <AnimatePresence exitBeforeEnter>
+          { showImage && (
+            <Output 
               variants={variants}
-              setUploadedFile={setUploadedFile}
-              message={message}
-              setMessage={setMessage}
+              uploadedFile={uploadedFile}
+              showImage={showImage}
               setShowImage={setShowImage}
-              setLabels={setLabels}
+              setUploadedFile={setUploadedFile}
+              labels={labels}
+              hotDogMode={true}
             />
           )
-        }
+          }
+        </AnimatePresence> 
+      </div>
       </AnimatePresence>
+    
+    );
+  } else {
+    return (
       <AnimatePresence exitBeforeEnter>
-        { showImage && (
-          <Output 
-            variants={variants}
-            uploadedFile={uploadedFile}
-            showImage={showImage}
-            setShowImage={setShowImage}
-            setUploadedFile={setUploadedFile}
-            labels={labels}
-            hotDogMode={hotDogMode}
-          />
-        )
-        }
-      </AnimatePresence> 
-      <AnimatePresence exitBeforeEnter>
-      {
-        !showImage &&  (
-          <JianYang hotDogMode={hotDogMode} setHotDogMode={setHotDogMode}/>
-        )
-      }     
-      </AnimatePresence>               
-     
-    </div>
-    </AnimatePresence>
+      <div style={AppStyle}>
+      <Background />
   
-  );
+        <Logo showImage={showImage}/>
+        <AnimatePresence exitBeforeEnter>
+          {
+            !showImage && (
+              <Upload 
+                variants={variants}
+                setUploadedFile={setUploadedFile}
+                message={message}
+                setMessage={setMessage}
+                setShowImage={setShowImage}
+                setLabels={setLabels}
+              />
+            )
+          }
+        </AnimatePresence>
+        <AnimatePresence exitBeforeEnter>
+          { showImage && (
+            <Output 
+              variants={variants}
+              uploadedFile={uploadedFile}
+              showImage={showImage}
+              setShowImage={setShowImage}
+              setUploadedFile={setUploadedFile}
+              labels={labels}
+              hotDogMode={hotDogMode}
+            />
+          )
+          }
+        </AnimatePresence> 
+        <AnimatePresence exitBeforeEnter>
+        {
+          !showImage &&  (
+            <JianYang hotDogMode={hotDogMode} setHotDogMode={setHotDogMode}/>
+          )
+        }     
+        </AnimatePresence>               
+       
+      </div>
+      </AnimatePresence>
+    
+    );
+  }
+  
 }
 
 export default App;
