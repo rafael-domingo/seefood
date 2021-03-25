@@ -38,7 +38,7 @@ app.post('/upload', (req, res) => {
     const file = req.files.file;
     // Call Google Cloud Vision API 
     const labels = CloudVision(file.data).then(response => {
-        const path = `${Date.now()}${file.name}`;
+        const path = `${file.name}`;
         console.log(file);
         // Move file to directory named below
         file.mv(`${__dirname}/client/public/uploads/${path}`, err => {
