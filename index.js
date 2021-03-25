@@ -2,6 +2,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
 const cors = require('cors');
+const cloudinary = require('cloudinary').v2;
 const PORT = process.env.PORT || 5000;
 
 const path = require('path')
@@ -36,9 +37,21 @@ app.post('/upload', (req, res) => {
     }
 
     const file = req.files.file;
+
+    // Upload to Cloudinary
+    // const cloudinaryCredentials = require('./cloudinary.json');
+    // cloudinary.config({
+    //     cloudinaryCredentials
+    // })
+    // cloudinary.uploader.upload(file,
+    // function(err, result) { 
+    //     console.log(result);
+    //     console.log(err)
+    //     })
+
     // Call Google Cloud Vision API 
     const labels = CloudVision(file.data).then(response => {
-        const path = `${file.name}`;
+        const path = `${Date.now()}${file.name}`;
         console.log(file);
         // Move file to directory named below
         file.mv(`${__dirname}/client/public/uploads/${path}`, err => {
@@ -50,6 +63,8 @@ app.post('/upload', (req, res) => {
             res.json({ fileName: file.name, filePath: `/uploads/${path}`, labels: response})
         });
     });
+    
+
 
    
 
