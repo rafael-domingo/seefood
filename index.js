@@ -62,13 +62,13 @@ app.post('/upload', (req, res) => {
         }
 
         var cloudinaryResult = result; 
-            // Call Google Cloud Vision API 
-            const labels = CloudVision(file.data).then(response => {
-            const path = `${Date.now()}${file.name}`;
-     
-            // Response back to client
-            res.json({ fileName: file.name, filePath: cloudinaryResult.url, labels: response})
-            })
+        // Call Google Cloud Vision API 
+        const labels = CloudVision(file.data).then(response => {
+        const path = `${Date.now()}${file.name}`;
+    
+        // Response back to client
+        res.json({ fileName: file.name, filePath: cloudinaryResult.url, labels: response})
+        })
 
     });
     
