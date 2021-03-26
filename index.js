@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
@@ -39,29 +40,36 @@ app.post('/upload', (req, res) => {
     const file = req.files.file;
 
     // Upload to Cloudinary
-    // const cloudinaryCredentials = require('./cloudinary.json');
-    // cloudinary.config({
-    //     cloudinaryCredentials
-    // })
-    // cloudinary.uploader.upload(file,
-    // function(err, result) { 
-    //     console.log(result);
-    //     console.log(err)
-    //     })
+    
+    // Convert image to base 64 for cloudinary
+    const cloudinaryImage = file.data.toString('base64')
 
-    // Call Google Cloud Vision API 
-    const labels = CloudVision(file.data).then(response => {
-        const path = `${Date.now()}${file.name}`;
-        console.log(file);
-        // Move file to directory named below
-        file.mv(`${__dirname}/client/public/uploads/${path}`, err => {
-            if(err) {
-                console.log(err);
-                return res.status(500).send();
-            }
+    // Cloudinary config file
+    cloudinary.config({
+         
+            cloud_name: process.env.CLOUD_NAME, 
+            api_key: process.env.API_KEY, 
+            api_secret: process.env.API_SECRET
+          
+    })
+
+    // Cloudinary endpoint
+    cloudinary.uploader.unsigned_upload(`data:image/png;base64,${cloudinaryImage}`, 'qyeatcav',
+    // Cloudinary callback
+    function(err, result) {
+        if (err) {
+            return res.status(400).json({ msg: 'Something went wrong with image upload'})
+        }
+
+        var cloudinaryResult = result; 
+            // Call Google Cloud Vision API 
+            const labels = CloudVision(file.data).then(response => {
+            const path = `${Date.now()}${file.name}`;
+     
             // Response back to client
-            res.json({ fileName: file.name, filePath: `/uploads/${path}`, labels: response})
-        });
+            res.json({ fileName: file.name, filePath: cloudinaryResult.url, labels: response})
+            })
+
     });
     
 
