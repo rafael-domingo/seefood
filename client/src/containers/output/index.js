@@ -43,9 +43,15 @@ import waffle from '../../assets/waffle.png';
 import watermelon from '../../assets/watermelon.png';
 import yogurt from '../../assets/yogurt.png';
 
-function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFile, labels, hotDogMode }) {
+function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFile, labels, hotDogMode, mobile }) {
     const [loaded, setLoaded] = React.useState(false);
     const [matchState, setMatchState] = React.useState();
+    const [mobileArray, setMobileArray] = React.useState([  {
+        labels: [
+            'could not recognize'
+        ],
+        image: notfood, 
+    }]);
     const imageArray = [
         {
             labels: [
@@ -361,6 +367,9 @@ function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFi
                     if (!matchState) {
                         console.log(`match: ${match}`)
                         setMatchState(match)
+                        if (mobile) {
+                            setMobileArray([item, imageArray[imageArray.length-1]]);
+                        }
                     }
                   
                 }
@@ -375,7 +384,7 @@ function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFi
         
     }, [0]) 
 
-    if (loaded && !hotDogMode) {
+    if (loaded && !hotDogMode && !mobile) {
         return (
             <AnimatePresence exitBeforeEnter>
                 <motion.div 
@@ -396,6 +405,33 @@ function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFi
                     show={showImage}
                     labels={labels}
                     imageArray={imageArray}
+                    matchState={matchState}
+                    />
+                </motion.div>
+            </AnimatePresence>
+              
+        )
+    } else if (loaded && !hotDogMode && mobile) {
+        return (
+            <AnimatePresence exitBeforeEnter>
+                <motion.div 
+                style={FoodStyle}
+                variants={variants}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                >
+                    <Image 
+                    uploadedFile={uploadedFile} 
+                    show={showImage} 
+                    setShow={setShowImage} 
+                    setUploadedFile={setUploadedFile}
+                    labels={labels}
+                    />
+                    <Food 
+                    show={showImage}
+                    labels={labels}
+                    imageArray={mobileArray}
                     matchState={matchState}
                     />
                 </motion.div>
@@ -430,7 +466,7 @@ function Output({ variants, uploadedFile, showImage, setShowImage, setUploadedFi
             </AnimatePresence>
         )
        
-    }
+    } 
     
     else {
         return (

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { AnimatePresence, motion } from 'framer-motion';
 import Form from '../form';
+import ReactLoading from 'react-loading';
 
 function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabels}) {
     const [currentImage, setCurrentImage] = useState();
-
+    const [loading, setLoading] = useState(false);
     // Side Effect - Submit data to API
     React.useEffect( async () => {
-
         if (currentImage) {
             const formData = new FormData();
             formData.append('file', currentImage);
@@ -28,7 +28,7 @@ function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabe
                 setUploadedFile({ fileName, filePath });
                 setMessage('File Uploaded');
                 setShowImage(true);
-    
+                setLoading(false)
             } catch(err) {
                 console.log('error')
                 if(err.response.status === 500) {
@@ -36,6 +36,7 @@ function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabe
                 } else {
                     setMessage(err.response.data.msg);
                 }
+                setLoading(false)
             }
         }
        
@@ -43,6 +44,8 @@ function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabe
 
     // Set image state
     const onChange = e => {
+        setLoading(true)
+
         try {
             console.log('on change');
             setCurrentImage(e.target.files[0]);
@@ -61,14 +64,40 @@ function FileUpload({setUploadedFile, message, setMessage, setShowImage, setLabe
         width: '100%'
     }
 
+    const variants = {
+        hidden: {
+            opacity: 0
+        },
+        show: {
+            opacity: 1
+        }
+    }
 
-    return(
-        <div style={fragmentStyle}>
-            {/* {message ? <Message msg={message}/> : null } */}
-            <Form onChange={onChange}/>
-        </div>
-
-    )
+    if (!loading) {
+        return(
+            <AnimatePresence exitBeforeEnter>
+            <motion.div 
+                style={fragmentStyle}
+                variants={variants}
+                initial="hidden"
+                animate="show"
+                exit="hidden">
+                {/* {message ? <Message msg={message}/> : null } */}
+                <Form onChange={onChange}/>
+            </motion.div>
+            </AnimatePresence>
+          
+    
+        )
+    } else {
+        return (
+            <AnimatePresence exitBeforeEnter>
+                <ReactLoading type={"spin"} color={"white"} height={'10%'} width={'10%'} />                
+            </AnimatePresence>
+            
+        )
+    }
+    
 }
 
 export default FileUpload;

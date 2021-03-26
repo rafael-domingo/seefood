@@ -64,11 +64,19 @@ function App() {
               setShowImage={setShowImage}
               setUploadedFile={setUploadedFile}
               labels={labels}
-              hotDogMode={true}
+              hotDogMode={hotDogMode}
+              mobile={true}
             />
           )
           }
         </AnimatePresence> 
+        <AnimatePresence exitBeforeEnter>
+        {
+          !showImage &&  (
+            <JianYang hotDogMode={hotDogMode} setHotDogMode={setHotDogMode}/>
+          )
+        }     
+        </AnimatePresence>          
       </div>
       </AnimatePresence>
     
@@ -104,6 +112,7 @@ function App() {
               setUploadedFile={setUploadedFile}
               labels={labels}
               hotDogMode={hotDogMode}
+              mobile={false}
             />
           )
           }

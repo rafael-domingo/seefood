@@ -35,24 +35,22 @@ function Food({ show, labels, imageArray, matchState = 'Could not recognize', ho
         display: 'flex',
         justifyContent: 'center',
         width: '100%',
-        fontSize: '5em',
+        fontSize: '2em',
         color: 'white',
     }
     const containerVariants = {
         hidden: { 
             opacity: 0,
-            y: '100vh',
             transition: {
-                duration: 0.5,
+                duration: 1,
                 type: 'spring'
             }
         },
         show: {
             opacity: 1,
-            y: 0,
             transition: {
-                duration: 0.5,
-                // delay: 0.5,
+                duration: 1,
+                delay: 0.5,
                 delayChildren: 1,
                 type: 'spring'
             }

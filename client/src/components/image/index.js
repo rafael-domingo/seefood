@@ -6,14 +6,13 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
     const backdrop = {
         visible: { 
             opacity: 1,
-            scale: 1,
         transition: {
             duration: 1,
             delay: 1,
             type: 'spring'
         } },
-        hidden: { opacity: 0,
-            scale: 0,
+        hidden: { 
+            opacity: 0,            
         transition: {
             duration: 1,
             type: 'spring'
@@ -48,7 +47,7 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
         width: '80%',
         height: '50vh',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         borderRadius: '30px'
     }
@@ -57,8 +56,8 @@ function Image({ uploadedFile, show, setShow, setUploadedFile, labels }) {
         position: 'absolute',
         height: '50px',
         width: '50px',
-        top: '2%',
-        right: '0%',
+        top: '5%',
+        right: '-10%',
         color: 'white',
         rotate: '45',
         borderRadius: '50%',
