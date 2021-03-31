@@ -11,6 +11,8 @@ This app utilizes the Google Cloud Vision API to detect the presence of food in 
 # Demo
 https://www.shazamfood.herokuapp.com/
 
+![GIF of App](https://github.com/rafael-domingo/seefood/blob/main/client/public/seefoodGIF.gif)
+
 # Technologies Used
 * React
 * NodeJS
